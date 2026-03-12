@@ -43,7 +43,7 @@ jobs:
         docker build \
         -t $IMAGE_BACKEND:latest \
         -t $IMAGE_BACKEND:$TAG \
-        ./backend
+        ./microservices-demo/backend
 
 
     - name: Push Backend Image
@@ -57,7 +57,7 @@ jobs:
         docker build \
         -t $IMAGE_FRONTEND:latest \
         -t $IMAGE_FRONTEND:$TAG \
-        ./frontend
+        ./microservices-demo/frontend
 
 
     - name: Push Frontend Image
