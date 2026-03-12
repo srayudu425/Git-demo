@@ -37,6 +37,11 @@ jobs:
       id: vars
       run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
+    - name: Show repository structure
+      run: |
+        pwd
+        ls -R
+
 
     - name: Build Backend Image
       run: |
