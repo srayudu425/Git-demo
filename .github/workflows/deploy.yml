@@ -1,0 +1,37 @@
+name: Deploy to Kubernetes
+
+#on:
+ # workflow_dispatch:
+  #push:
+   # branches:
+    #  - master
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+
+    - name: Setup kubectl
+      uses: azure/setup-kubectl@v3
+
+
+    - name: Configure kubeconfig
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
+
+
+    - name: Verify cluster
+      run: kubectl get nodes
+
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f microservices-demo/k8s/
