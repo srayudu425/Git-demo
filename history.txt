@@ -1,0 +1,1000 @@
+  396  git commit -m "deployment and service for backend"
+  397  git push origin master
+  398  git status
+  399  git add .
+  400  git commit -m "deploy.yml"
+  401  git push origin master
+  402  pwd
+  403  it status
+  404  git status
+  405  k apply -f microservices-demo/k8s/
+  406  kubectl apply -f microservices-demo/k8s/
+  407  kubectl get ns
+  408  kubectl apply -f microservices-demo/k8s/
+  409  git status
+  410  git add .
+  411  git commit -m "deployment and service"
+  412  git push origin master
+  413  git pull origin master
+  414  git pull --rebase origin master
+  415  git push origin master
+  416  git status
+  417  git add .
+  418  git commit -m "secrets for dockerHub registry"
+  419  git push origin master
+  420  git status
+  421  git add .
+  422  git commit -m "image name"
+  423  git push origin master
+  424  kubectl apply -f microservices-demo/k8s/backend-deployment.yml 
+  425  kubectl get pods
+  426  kubectl describe pod backend-64d9cfdc7d-2p288
+  427  kubectl get pods
+  428  kubectl get rs
+  429  git status
+  430  git add .
+  431  git commit -m "replicas"
+  432  git push origin master
+  433  kubectl get pods
+  434  kubectl apply -f microservices-demo/k8s/backend-deployment.yml 
+  435  kubectl get pods
+  436  kubectl get rs
+  437  k9s
+  438  kubectl apply -f microservices-demo/k8s/backend-deployment.yml 
+  439  kubectl rollout restart deployment backend-deployment
+  440  kubectl get pods
+  441  kubectl get rs
+  442  kubectl get svc
+  443  minikube service backend-service
+  444  kubectl apply -f microservices-demo/k8s/backend-service.yaml 
+  445  kubectl get svc
+  446  minikube service backend-service
+  447  git status
+  448  git add .
+  449  git commit -m "frontend deployment and service"
+  450  git push origin master
+  451  kubectl apply -f microservices-demo/k8s/frontend-deployment.yml 
+  452  git status
+  453  kubectl apply -f microservices-demo/k8s/frontend-deployment.yml 
+  454  git status
+  455  git add .
+  456  git commit -m "frontend deployment"
+  457  git push origin master
+  458  kubectl apply -f microservices-demo/k8s/frontend-deployment.yml 
+  459  kubectl get deployments
+  460  kubectl get deployments, rs, pods
+  461  kubectl get deployments
+  462  kubectl get pods
+  463  kubectl get svc
+  464  kubectl apply -f microservices-demo/k8s/frontend-service.yaml 
+  465  kubectl get svc
+  466  git status
+  467  git add .
+  468  git commit -m "ingress added"
+  469  git push origin master
+  470  kubectl apply -f microservices-demo/k8s/app-ingress.yaml 
+  471  kubectl get ingress
+  472  exit
+  473  minikube status
+  474  minikube start
+  475  kubectl get deployments
+  476  kubectl get ingress
+  477  kubectl get replicasets
+  478  kubectl get pods
+  479  kubectl get svc
+  480  curl http://192.168.49.2:31093
+  481  curl http://192.168.49.2:32471
+  482  curl curl http://app.local/api
+  483  curl http://app.local/api
+  484  cat /etc/host
+  485  cat /etc/hosts
+  486  kubectl describe ingress microservices-ingress
+  487  vi /etc/hosts
+  488  cat /etc/hosts 
+  489  sudo vi /etc/hosts
+  490  cat /etc/hosts
+  491  curl http://app.local
+  492  curl http://app.local/
+  493  curl http://app.local/api
+  494  curl http://app.local/
+  495  curl http://app.local/api
+  496  kubectl get endpoints 
+  497  kubectl get pods --show-labels
+  498  kubectl get svc --show-labels
+  499  kubectl get pods -l app=backend
+  500  kubectl get pods -l app=frontend
+  501  kubectl get endpoints
+  502  kubectl get endpointslice
+  503  kubectl get pods
+  504  kubectl exec -it backend-deployment-5f87d4cdd4-2djlg --nslookup backend-service
+  505  kubectl exec -it backend-deployment-5f87d4cdd4-2djlg -- nslookup backend-service
+  506  kubectl exec -it backend-deployment-5f87d4cdd4-2djlg -- getent hosts backend-service
+  507  kubectl get svc -n kube-system
+  508  helm version
+  509  pwd
+  510  cd Devops/
+  511  ls
+  512  cd git/
+  513  ls
+  514  ls microservices-demo/
+  515  cd microservices-demo/
+  516  ls
+  517  ls helm-charts/
+  518  cd helm-charts/
+  519  helm create microservices-chart
+  520  ls
+  521  cd microservices-chart/
+  522  ls
+  523  cat charts/
+  524  ls
+  525  cat Chart.yaml
+  526  ls
+  527  cd ..
+  528  ls
+  529  cd helm-charts/
+  530  ls
+  531  helm install microservices ./microservices-chart
+  532  helm list
+  533  ls
+  534  kubectl get all
+  535  ls
+  536  rm -rf microservices-chart/templates/*
+  537  cd microservices-chart/
+  538  ls
+  539  ls templates/
+  540  ls
+  541  cd ..
+  542  ls
+  543  helm lint microservices-chart/
+  544  ls
+  545  helm template test microservices-chart/
+  546  helm show values microservices-chart/
+  547  helm list
+  548  helm uninstall microservices
+  549  helm list
+  550  kubectl gell all
+  551  kubectl get all
+  552  kubectl delete all, ingress --all
+  553  kubectl delete all,ingress --all
+  554  kubectl get all
+  555  kubectl get ingress
+  556  heml install microservices ./microservices-chart/
+  557  helm install microservices ./microservices-chart/
+  558  kubectl get all
+  559  kubectl get ingress
+  560  kubectl get all
+  561  helm upgrade microservices ./microservices-chart/
+  562  kubectl get all
+  563  kubectl get pods
+  564  kubectl get secrets
+  565  helm upgrade microservices ./microservices-chart/
+  566  kubectl get pods
+  567  kubectl get deployments
+  568  kubectl get pods
+  569  kubectl get all
+  570  curl http://app.local/
+  571  http://app.local
+  572  curl http://app.local
+  573  helm list
+  574  kubectl describe ingress
+  575  curl http://app.local
+  576  kubectl get svc
+  577  kubectl get pods
+  578  kubectl logs backend-7957fc79cd-8rwfk
+  579  curl http://10.108.12.47:31617
+  580  kubectl describe svc
+  581  kubectl get  pods
+  582  kubectl logs backend-7957fc79cd-8rwfk
+  583  kubectl get endpoints
+  584  curl http://198.168.49.2:31617
+  585  kubectl port-forward svc/backend-service 8080/80
+  586  kubectl get svc
+  587  kubectl port-forward backend-service 8080/80
+  588  kubectl port-forward svc/backend-service 8080:80
+  589  http://localhost:8080
+  590  curl localhost:8080
+  591  minikube stop
+  592  exit
+  593  cd Devops/git/
+  594  git status
+  595  git add .
+  596  git commit -m "ingress updated with annotations"
+  597  git push origin master
+  598  kubectl apply -f microservices-demo/k8s/app-ingress.yaml 
+  599  kubectl describe ingress microservices-ingress
+  600  git status
+  601  git add .
+  602  git status
+  603  git add .
+  604  git status
+  605  git commit -m "helm"
+  606  git push origin master
+  607  git status
+  608  pwd
+  609  ls
+  610  ls Downloads/
+  611  ls Downloads/webi/
+  612  ls Downloads/webi/k9s/
+  613  mkdir -p project/dev/backend
+  614  ls
+  615  ls project/
+  616  touch file
+  617  stat file 
+  618  tree Downloads/
+  619  tree
+  620  df -h
+  621  du -sh /*
+  622  ls
+  623  pwd
+  624  du -sh /home/sanjeeva/Devops/*
+  625  du -sh /home/sanjeeva/Devops/git/*
+  626  du -sh /home/*
+  627  pwd
+  628  du -sh /* | sort hr
+  629  find /home/sanjeeva/Devops/ -f -size+20M
+  630  find /home/sanjeeva/Devops/ type f -size+20M
+  631  find /home/sanjeeva/Devops/ type f -size +20M
+  632  ls
+  633  cd Devops/
+  634  ls
+  635  ls -lh
+  636  find git/ -type f -name file2.txt
+  637  ls
+  638  find /home/ -type f name ci.yml
+  639  find /home/ -type f -name ci.yml
+  640  find /home/sanjeeva/Devops/git/ -type file
+  641  find /home/sanjeeva/Devops/ type d
+  642  find /home/sanjeeva/Devops/ type f
+  643  find /home/sanjeeva/Devops/git/ type f
+  644  ls /home/sanjeeva/Devops/git/
+  645  find /home/sanjeeva/Devops/git/ -type f
+  646  vi disk.sh
+  647  sh disk.sh 
+  648  vi disk.sh 
+  649  sh disk.sh 
+  650  vi disk.sh 
+  651  sh disk.sh 
+  652  vi disk.sh 
+  653  sh disk.sh 
+  654  vi disk.sh 
+  655  sh disk.sh 
+  656  vi disk.sh 
+  657  sh disk.sh 
+  658  cat disk.sh 
+  659  vi disk.sh 
+  660  sh disk.sh 
+  661  ./disk.sh
+  662  sh disk.sh 
+  663  vi clinup.sh
+  664  ls
+  665  mkdir scripts
+  666  mv clinup.sh scripts/
+  667  mv disk.sh scripts/
+  668  ls
+  669  cd scripts/
+  670  vi service.sh
+  671  vi clinup.sh 
+  672  cat service.sh 
+  673  ls
+  674  vi cpu.sh
+  675  top
+  676  ls
+  677  cd..
+  678  cd ..
+  679  cd git/
+  680  minikube start
+  681  kubectl get all
+  682  minikube ip
+  683  curl http://192.168.49.2:31617
+  684  curl http://192.168.49.2:32162
+  685  kubectl describe svc frontend-service
+  686  kubectl describe svc backend-service
+  687  kubectl get pods
+  688  kubectl describe pod backend-7957fc79cd-8rwfk 
+  689  \kubectl get ingress
+  690  kubectl describe ingress microservices-ingress
+  691  curl http://app.local
+  692  cat /etc/hosts
+  693  sudo vi /etc/hosts
+  694  minikube ip
+  695  cat /etc/hostes
+  696  cat /etc/hosts
+  697  curl http://myapp.local/
+  698  curl http://myapp.local
+  699  curl http://192.168.49.2:31617
+  700  curl http://myapp.local/api
+  701  sudo vi /etc/hosts
+  702  curl http://myapp.local/api
+  703  curl http://myapp.local
+  704  curl http://app.local
+  705  curl http://app.local/
+  706  curl http://app.local/api
+  707  curl http://app.local
+  708  kubectl get endpoints
+  709  kubectl get svc frontend-service -o yml
+  710  kubectl get svc frontend-service -o yaml
+  711  kubectl get pods
+  712  kubectl logs frontend-6946d566cc-5rslp
+  713  kubectl logs frontend-6946d566cc-nlqbn
+  714  kubectl logs backend-7957fc79cd-8rwfk
+  715  kubectl logs frontend-6946d566cc-nlqbn --previous
+  716  kubectl describe pod frontend-6946d566cc-nlqbn
+  717  kubectl describe ingress
+  718  cd ..
+  719  ls
+  720  cd git/
+  721  ls
+  722  cd microservices-demo/
+  723  ls
+  724  cd helm-charts/
+  725  ls
+  726  helm list
+  727  helm upgrade microservices ./microservices-chart/
+  728  kubectl get all
+  729  curl http://app.local
+  730  curl http://app.local/api
+  731  curl http://app.local/
+  732  curl http://app.local/api
+  733  kubectl get svc
+  734  kubectl get endpoints
+  735  minikube ap
+  736  minikube ip
+  737  curl 192.168.49.2:31617
+  738  curl 192.168.49.2:32162
+  739  curl http://app.local
+  740  curl http://192.168.49.2:32
+  741  curl http://app.local/api
+  742  curl http://app.local/
+  743  k9s
+  744  kubectl get svc -n ingress-nginx
+  745  curl http://app.local/api
+  746  helm upgrade microservices ./microservices-chart/
+  747  curl http://app.local/api
+  748  curl http://app.local
+  749  kubectl run test --rm -it --image=busybox -- sh
+  750  kubectl exec -it frontend-6946d566cc-nlqbn -- sh
+  751  ls
+  752  minikube stop
+  753  exit
+  754  minikube status
+  755  minikube start
+  756  kubectl get pods
+  757  kubectl get svc
+  758  cat /etc/hosts
+  759  sudo vi /etc/hosts
+  760  minikube ip
+  761  sudo /etc/hosts
+  762  sudo /etc/hs
+  763  sudo /etc/hosts
+  764  so vi /etc/hosts
+  765  sudo vi /etc/hosts
+  766  cat /etc/hosts
+  767  curl app.local
+  768  curl app.local/api
+  769  ls
+  770  cd Devops
+  771  cd git/
+  772  ls
+  773  kubectl edit backend-eployment.yml
+  774  ls microservices-demo/
+  775  ls microservices-demo/helm-charts/
+  776  ls microservices-demo/helm-charts/microservices-chart/templates/
+  777  kubectl get deployments
+  778  kubectl edit deployment frontend
+  779  kubectl get pods -l app=frontend
+  780  kubectl logs frontend-6946d566cc-5rslp
+  781  kubectl get svc
+  782  kubectl describe svc frontend-service
+  783  kubectl get pods
+  784  kubectl describe pod frontend-6946d566cc-5rslp
+  785  kubectl logs frontend-6946d566cc-5rslp
+  786  kubectl get endpoints
+  787  kubectl run test --rm -it --image=Busybox -- sh
+  788  kubectl run test --rm -it --image busybox -- sh
+  789  kubectl get pods
+  790  kubectl exec -it frontend-6946d566cc-5rslp -- sh
+  791  kubectl describe pod frontend-6946d566cc-5rslp
+  792  kubectl get svc
+  793  kubectl edit svc frontend-service
+  794  helm list
+  795  cd microservices-demo/helm-charts/
+  796  ls
+  797  helm upgrade microservices ./microservices-chart/
+  798  kubectl get pods
+  799  kubectl get svc
+  800  curel http://app.local
+  801  curl http://app.local
+  802  curl http://app.local/api
+  803  kubectl create namespace argocd
+  804  kubectl get ns
+  805  kubectl config view --minify
+  806  kubectl config view --minify | frep namespace
+  807  kubectl config view --minify | grep namespace
+  808  kubectl config set-context --current --namespace=argocd
+  809  kubectl get pods
+  810  helm repo add argo https://argoproj.github.io/argo-helm
+  811  helm repo update
+  812  helm install argocd argo/argo-cd -n argocd
+  813  kubectl get pods
+  814  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+  815  kubectl port-forward service/argocd-server -n argocd 8080:443
+  816  ps -ef | grep port-forward
+  817  kubectl port-forward service/argocd-server -n a+rgocd 8080:443 &
+  818  kubectl port-forward service/argocd-server -n argocd 8080:443 &
+  819  cur http://app.local
+  820  kubectl config --current-context namaspace=default
+  821  kubectl config set-context --current --namespace=default
+  822  curl http://app.local
+  823  kubectl get pods
+  824  kubectl get svc
+  825  curl http://app.local/api
+  826  kubectl edit svc frontend-service
+  827  helm upgrade microservices ./microservices-chart/
+  828  kubectl edit svc frontend-service
+  829  curl app.local/api
+  830  curl app.local
+  831  kubectl get svc -n ingress-nginx
+  832  curl http://192.168.49.2:30393
+  833  http://app.local:30393
+  834  curl http://app.local:30393
+  835  kubectl edit application frontend -n argocd
+  836  kubectl get applications
+  837  kubectl get applications -n argocd
+  838  kubectl describe application frontend
+  839  kubectl describe application frontend -n argocd
+  840  kubectl get pods -n argocd
+  841  kubectl get pods
+  842  kubectl get applications -n argocd
+  843  kubectl edit application frontend
+  844  kubectl edit application frontend -n argocd
+  845  kubectl edit application frontend -n argocd | grep branch
+  846  kubectl get deployments
+  847  kubectl get pods
+  848  ps -ef | grep port-forward
+  849  kill -9 45005
+  850  minikube stop
+  851  minikube status
+  852  exit
+  853  cd Devops/git/
+  854  git status
+  855  gi add .
+  856  git add .
+  857  git commit -m "frontend fix with updating application port in service"
+  858  git push origin master
+  859  ls
+  860  git status
+  861  git add .
+  862  git commit -m "argocd auto updater"
+  863  git push origin master
+  864  git status
+  865  cd Devops/git/microservices-demo/
+  866  ls
+  867  minikube start
+  868  kubectl get pods
+  869  cure http://app.local
+  870  curl http://app.local
+  871  curl http://app.local/api
+  872  cd helm-charts/microservices-chart/
+  873  ls
+  874  cat values.yaml 
+  875  cd ..
+  876  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  877  kubectl create namespace monitoring
+  878  kubectl config set-context --current --namespace=monitoring
+  879  kubectl get pods
+  880  helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
+  881  kubectl get pods -n monitoring
+  882  kubectl --namespace monitoring get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+  883  kubectl port-forward service/monitoring-grafana 3000:80 -n monitoring
+  884  kubectl port-forward service/monitoring-grafana 3000:80 -n monitoring &
+  885  kubectl port-forward service/argocd-server -n argocd 8080:443 &
+  886  kubectl port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090 -n monitoring
+  887  kubectl port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090 -n monitoring &
+  888  kubectl get pods
+  889  ls
+  890  ls helm-charts/
+  891  cd helm-charts/
+  892  cd microservices-chart/
+  893  ls
+  894  cd templates/
+  895  cd ..
+  896  ls charts/
+  897  cat values.yaml 
+  898  kube_pod_info
+  899  ps -ef | grep port-forward
+  900  kill -9 23614
+  901  kill -9 23826
+  902  kill -9 26306
+  903  ps -ef | grep port-forward
+  904  minikube stop
+  905  minikube status
+  906  exit
+  907  cd Devops/git/
+  908  git status
+  909  git add .
+  910  git commit -m "added content in frontend"
+  911  git push origin master
+  912  git fetch origin master
+  913  git push origin master
+  914  git rebase origin master
+  915  git pull origin master --rebase
+  916  git push origin master
+  917  ps -ef
+  918  top
+  919  minikube status
+  920  minikube start
+  921  minikube status
+  922  minikube start
+  923  minikube status
+  924  kubectl get pods
+  925  top
+  926  htop
+  927  ps -eo pid,cmd,%cpu --sort=-%cpu | head -n 6 
+  928  ps -r
+  929  lscpu
+  930  nproc
+  931  free -h
+  932  kubectl port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090 -n monitoring &
+  933  kubectl port-forward service/argocd-server -n argocd 8080:443 &
+  934  kubectl port-forward service/monitoring-grafana 3000:80 -n monitoring &
+  935  kubectl get pods -n monitoring
+  936  kubectl get ns
+  937  kubectl get pods -A
+  938  kubectl get configmap -n monitoring
+  939  kubectl describe configmap monitoring-grafana -n monitoring
+  940  kubectl get configmap monitoring-grafana -n monitoring -o yaml
+  941  helm list -A
+  942  ps -ef | port-forward
+  943  ps -ef | port-forwarding
+  944  history
+  945  kill -9 23710
+  946  kill -9 23787
+  947  kill -9 23829
+  948  ps -ef | port-forwarding
+  949  minikube stop
+  950  minikube status
+  951  exit
+  952  cd Devops/git/
+  953  ls
+  954  git status
+  955  git pull origin master
+  956  git add .
+  957  git push origin master
+  958  git commit -m "db changes"
+  959  git push origin master
+  960  docker ps
+  961  docker run -d --name postgres -e POSTGRES_PASSWORD=admin -p 5432:5432 postgres
+  962  docker ps
+  963  docker images
+  964  docker exec -it postgres psql -U postgres
+  965  docker ps
+  966  exit
+  967  docker ps
+  968  minikube status
+  969  minikube start
+  970  minikube status
+  971  kubectl get ns
+  972  kubectl kubectl get pods
+  973  kubectl get pods
+  974  kubecl config get-contexts
+  975  kubectl config get-contexts
+  976  kubectl config view --minify
+  977  kubectl config view --minify|grep namespace
+  978  kubectl config set-context --current --namespace=monitoring
+  979  kubectl config view --minify|grep namespace
+  980  kubectl get svc
+  981  minikube ssh
+  982  kubectl get svc
+  983  minikube ssh
+  984  kubectl config set-context --current --namespace=default
+  985  kubectl config view --minify | rep namespace
+  986  kubectl config view --minify | grep namespace
+  987  cd Devops/git/
+  988  cd database/
+  989  ls
+  990  kubectl apply -f pvc.yml 
+  991  ls
+  992  ls -l
+  993  cat pvc.yml 
+  994  kubectl apply -f pvc.yml 
+  995  kubectl get pvc
+  996  kubectl get pv
+  997  ls /var/lib/postgresql/data
+  998  ls /var/lib/
+  999  kubectl describe pvc postgres-pvc
+ 1000  kubectl describe pv pvc-286cf522-fa95-4390-a0f4-849022d85c18
+ 1001  ls /tmp/hostpath-provisioner/default/postgres-pvc
+ 1002  ls
+ 1003  cat db-deploy.yml 
+ 1004  kubectl get storageclass
+ 1005  kubectl describe storageclass
+ 1006  cat pvc.yml 
+ 1007  kubectl delete pvc postgres-pvc
+ 1008  kubecl get pvc
+ 1009  kubectl get pvc
+ 1010  kubectl get pv
+ 1011  kubectl apply -f pvc.yml 
+ 1012  kubectl get pv
+ 1013  kubectl get pvc
+ 1014  minikube addons list
+ 1015  kubectl apply -f db-deploy.yml 
+ 1016  kubectl get pods
+ 1017  kubectl apply -f db-service.yml 
+ 1018  kubectl get svc
+ 1019  kubectl exec -it postgres-68b4b4db8-ffl5g -- psql -U admin -d mydb
+ 1020  kubectl exec -it postgres-68b4b4db8-ffl5g -- psql -U postgres
+ 1021  kubectl get pods
+ 1022  kubectl delete pod postgres-68b4b4db8-ffl5g
+ 1023  kubectl get pods
+ 1024  kubectl exec -it postgres-68b4b4db8-g5z5t -- psql -U postgres
+ 1025  kubectl get pods
+ 1026  kubectl delete pod postgres-68b4b4db8-g5z5t
+ 1027  kubectl get pods
+ 1028  kubectl exec -it postgres-68b4b4db8-4mmfx -- psql -U postgres
+ 1029  kubectl describe pod postgres-68b4b4db8-4mmfx
+ 1030  kubectl get pods
+ 1031  kubectl describe postgres-f8bfb6597-n7xh4
+ 1032  kubectl describe pod postgres-f8bfb6597-n7xh4
+ 1033  kubectl logs postgres-f8bfb6597-n7xh4
+ 1034  kubectl gt pods
+ 1035  kubectl get pods
+ 1036  kubectl delete pod postgres-68b4b4db8-4mmfx
+ 1037  kubectl delete pod postgres-f8bfb6597-n7xh4
+ 1038  kubectl get pods
+ 1039  kubectl delete pvc postgres-pvc
+ 1040  kubectl delete pod postgres-f8bfb6597-n7xh4
+ 1041  kubectl get deployments
+ 1042  kubectl delete deployment postgres
+ 1043  kubectl get pvc
+ 1044  kubectl get pv
+ 1045  kubectl get svc
+ 1046  kubectl delete svc postgres
+ 1047  kubectl get all
+ 1048  kubectl apply -f db-deploy.yml 
+ 1049  kubectl apply -f pvc.yml 
+ 1050  kubectl get pods
+ 1051  kubectl get all
+ 1052  kubectl exec -it pod/postgres-86d6696c87-z7t7r -- psql -u postgres
+ 1053  kubectl exec -it pod/postgres-86d6696c87-z7t7r --psql -u postgres
+ 1054  kubectl exec -it pod/postgres-86d6696c87-z7t7r -- psql -U postgres
+ 1055  kubectl get pods
+ 1056  kubectl delete pod postgres-86d6696c87-z7t7r
+ 1057  kubectl get pods
+ 1058  kubectl exec -it postgres-86d6696c87-lxt72 -- psql -U postgres
+ 1059  kubectl delete deployment postgres
+ 1060  kubectl delete service postgres
+ 1061  kubectl delete pvc postgres-pvc
+ 1062  kubectl get all
+ 1063  kubectl get pvc
+ 1064  cd statefulset/
+ 1065  ls
+ 1066  kubectk apply -f statfulset-deploy.yml 
+ 1067  kubectl apply -f statfulset-deploy.yml 
+ 1068  kubectk apply -f headless-service.yml 
+ 1069  kubectl apply -f headless-service.yml 
+ 1070  kubectl get pods
+ 1071  kubectl get svc
+ 1072  kubectl get pvc
+ 1073  kubectl scale statefulset postgres --replicas=2
+ 1074  kubectl get pvc
+ 1075  kubectl get pods
+ 1076  kubectl exec -it postgres-0 -- psql -U postgres
+ 1077  kubectl exec -it postgres-0 -- bash
+ 1078  kubectl delete pod postgres-0
+ 1079  kubectl get pods
+ 1080  kubectl exec -it postgres-1 -- bash
+ 1081  rm -rf /var/lib/postgresql/data/*
+ 1082  pg_basebackup -h postgres-0.postgres -D /var/lib/postgresql/data -U replicator -W -P --wal-method=stream
+ 1083  find /usr/lib/postgresql -name pg_basebackup
+ 1084  minikube stop
+ 1085  minikube start
+ 1086  kubectl get pods
+ 1087  kubectl exec -it postgres-1 -- bash
+ 1088  kubectl exec -it postgres-0 -- bash
+ 1089  kubectl exec -it postgres-0 -- psql -U postgres
+ 1090  kubectl get pvc
+ 1091  kubectl exec -it postgres-0 -- psql -U postgres
+ 1092  kubectl get pods
+ 1093  kubectl delete pod postgres-0
+ 1094  kubectl get pods
+ 1095  kubectl exec -it postgres-0 -- psql -U postgres
+ 1096  kubectl exec -it postgres-0 -- bash
+ 1097  kubectl exec -it postgres-0 -- psql -U postgres
+ 1098  kubectl exec -it postgres-0 -- bash
+ 1099  kubectl delete pod postgres-0
+ 1100  kubectl exec -it postgres-0 -- psql -U postgres
+ 1101  kubectl exec -it postgres-0 -- bash
+ 1102  kubectl exec -it postgres-1 -- bash
+ 1103  kubectl exec -it postgres-0 -- psql -U postgres -c "\du"
+ 1104  kubectl exec -it postgres-0 -- psql -U postgres
+ 1105  kubectl exec -it postgres-1 -- bash
+ 1106  kubectl describe pod postgres-1
+ 1107  kubectl exec -it postgres-1 -- ps aux | grep postgres
+ 1108  kubectl logs postgres-1
+ 1109  kubectl get pods
+ 1110  kubectl top
+ 1111  ps -ef
+ 1112  free -h | grep postgress
+ 1113  free -h 
+ 1114  kubectl exec -it postgres-1 -- ps aux | grep postgres
+ 1115  minikube stop
+ 1116  exit
+ 1117  cd Devops/git/database/
+ 1118  cd ..
+ 1119  git status
+ 1120  git pull
+ 1121  git pull origin master
+ 1122  git add .
+ 1123  git status
+ 1124  git commit -m "statefulset"
+ 1125  git push origin master
+ 1126  git status
+ 1127  cd Devops/git/
+ 1128  ls
+ 1129  ls -la
+ 1130  cd .git
+ 1131  ls
+ 1132  ls -ltr
+ 1133  ls hooks/
+ 1134  cd ..
+ 1135  ls -la
+ 1136  touch.gitignore
+ 1137  touch .gitignore
+ 1138  ls -la
+ 1139  echo "AWS_SECRET_ACCESS_KEY=123" > .env
+ 1140  ls -ltr
+ 1141  ls la
+ 1142  ls -la
+ 1143  cat .env 
+ 1144  cat .gitignore 
+ 1145  echo ".env" >> .gitignore 
+ 1146  git status
+ 1147  git add .
+ 1148  git status
+ 1149  git commit -m "adding .gitignore file"
+ 1150  git push origin master
+ 1151  cd .git
+ 1152  cd hooks/
+ 1153  ls
+ 1154  cat pre-commit.sample 
+ 1155  cat > .git/hooks/pre-commit << 'EOF'
+ 1156  #!/bin/bash
+ 1157  echo "🔍 Running native pre-commit hook..."
+ 1158  if git diff --cached | grep -i "secret"; then
+ 1159    echo "❌ Secret detected. Commit blocked."
+ 1160    exit 1
+ 1161  fi
+ 1162  echo "✅ Commit passed security checks."
+ 1163  exit 0
+ 1164  EOF
+ 1165  cat pre-commit.sample 
+ 1166  ls
+ 1167  grep "git diff" /pre-commit
+ 1168  exit
+ 1169  minikube status
+ 1170  minikube start
+ 1171  kubectl get -A
+ 1172  kubectl get pods -A
+ 1173  kubectl describe pod storage-provisioner
+ 1174  kubectl get deployments
+ 1175  kubectl get pods
+ 1176  kubectl get ns
+ 1177  kubectl describe pod  storage-provisioner -n kube-system
+ 1178  kubectl logs storage-provisioner -n kube-system
+ 1179  kubectl get storageclass
+ 1180  kubectl get clusterrole | grep provisioner
+ 1181  kubectl get clusterrolebinding | grep provisioner
+ 1182  kubectl get deployments
+ 1183  kubectl get ns
+ 1184  kubectl get pods -ns monitoring
+ 1185  kubectl get pods ns monitoring
+ 1186  kubectl get pods -n monitoring
+ 1187  kubectl get pods -n argocd
+ 1188  kubectl get pods -n default
+ 1189  kubectl get pods
+ 1190  kubectl get deployments
+ 1191  kubectl get svc
+ 1192  kubectl get statefulset
+ 1193  kubectl delete statefulset postgres
+ 1194  kubectl get statefulset
+ 1195  kubectl get pods
+ 1196  kubectl get pvc
+ 1197  kubect delete pvc postgres-storage-postgres-0
+ 1198  kubectl delete pvc postgres-storage-postgres-0
+ 1199  kubectl delete pvc postgres-storage-postgres-1
+ 1200  kubectl get pvc
+ 1201  kubectl get pv
+ 1202  kubectl get pvc-03d6caf2-d890-41b9-8e8a-d4465c933afb -o yaml
+ 1203  kubectl get pv
+ 1204  kubectl describe pv pvc-03d6caf2-d890-41b9-8e8a-d4465c933afb
+ 1205  kubectl delete pv pvc-03d6caf2-d890-41b9-8e8a-d4465c933afb
+ 1206  kubectl get pv
+ 1207  kubectl delete pv pvc-9ba311df-0421-4343-81b1-7b81c8a7fcd0
+ 1208  minikube ssh
+ 1209  kubectl get pv
+ 1210  kubectl get pvc
+ 1211  kubectl get svc
+ 1212  kubectl delete svc postgres
+ 1213  kubectl get svc
+ 1214  cd Devops/git/database/statefulset/
+ 1215  ls
+ 1216  kubectl apply -f headless-service.yml 
+ 1217  kubectl apply -f statfulset-deploy.yml 
+ 1218  kubectl get pods
+ 1219  kubectl get pvc
+ 1220  kubectl get pv
+ 1221  kubectl get svc
+ 1222  kubectl apply -f statfulset-deploy.yml 
+ 1223  kubectl get pods
+ 1224  kuectl exec -it backend-7957fc79cd-8rwfk -- bash
+ 1225  kuectl exec -it backend-7957fc79cd-8rwfk --bash
+ 1226  kubectl exec -it backend-7957fc79cd-8rwfk --bash
+ 1227  kubectl exec -it backend-7957fc79cd-8rwfk --sh
+ 1228  kubectl exec -it backend-7957fc79cd-8rwfk --bash
+ 1229  kubectl exec -it backend-7957fc79cd-8rwfk -- bash
+ 1230  kubectl exec -it postgres-0 -- bash
+ 1231  kubectl exec -it backend-7957fc79cd-8rwfk -- bash
+ 1232  kubectl exec -it postgres-0 -- bash
+ 1233  kubectl scale deployment backend --replicas=2
+ 1234  kubectl get pods
+ 1235  kubectl get deployments
+ 1236  kubectl exec -it backend-7957fc79cd-qbxfs -- bash
+ 1237  minikube stop
+ 1238  exit
+ 1239  az version
+ 1240  sudo apt update && sudo apt upgrade -y
+ 1241  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+ 1242  terraform -version
+ 1243  az version
+ 1244  sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+ 1245  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+ 1246  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+ 1247  https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+ 1248  sudo apt update
+ 1249  sudo apt install terraform -y
+ 1250  terraform version
+ 1251  kubectl version --client
+ 1252  az login
+ 1253  az login --use-device-code
+ 1254  az account show --output table
+ 1255  ls
+ 1256  cd Devops/
+ 1257  mkdir azure_terraform
+ 1258  cd azure_terraform/
+ 1259  mkdir -p modules/aks
+ 1260  ls
+ 1261  cd modules/aks/
+ 1262  ls
+ 1263  pwd
+ 1264  cd ..
+ 1265  pwd
+ 1266  ls
+ 1267  cd ..
+ 1268  ls
+ 1269  cp -r azure_terraform/ git/
+ 1270  cd git/
+ 1271  ls
+ 1272  git status
+ 1273  git add .
+ 1274  git status
+ 1275  git commit -m "terraform modules"
+ 1276  git push origin master
+ 1277  git status
+ 1278  exit
+ 1279  pwd
+ 1280  cd Devops/
+ 1281  ls
+ 1282  cd azure_terraform/
+ 1283  ls
+ 1284  cd modules/
+ 1285  ls
+ 1286  ls -ltr
+ 1287  cd ..
+ 1288  ls
+ 1289  cp modules/main.tf .
+ 1290  ls
+ 1291  terraform init
+ 1292  terraform fmt
+ 1293  terraform validate
+ 1294  cd Devops/
+ 1295  ls
+ 1296  cp -r azure_terraform/ git/
+ 1297  cd git/
+ 1298  ls
+ 1299  cd azure_terraform/
+ 1300  ls
+ 1301  terraform init
+ 1302  terraform validate
+ 1303  pwd
+ 1304  ls
+ 1305  ls -la
+ 1306  cd modules/
+ 1307  ls
+ 1308  rm -rf main.tf 
+ 1309  cd ..
+ 1310  terraform validate
+ 1311  ls
+ 1312  terraform plan
+ 1313  cd Devops/git/
+ 1314  ls
+ 1315  cd azure_terraform/
+ 1316  ls
+ 1317  terraform plan
+ 1318  terraform plan -out=tfplan
+ 1319  terraform apply -target=module.network
+ 1320  terraform state list
+ 1321  terraform -target=module.acr -auto-approve
+ 1322  terraform apply -target=module.acr -auto-approve
+ 1323  terraform apply -target=module.aks -auto-approve
+ 1324  terraform destroy
+ 1325  terraform state list
+ 1326  ls -ltr
+ 1327  ls -latr
+ 1328  cd .terraform/
+ 1329  ls
+ 1330  cd providers/
+ 1331  ls
+ 1332  cd registry.terraform.io/
+ 1333  ls
+ 1334  c hashicorp/
+ 1335  ls
+ 1336  cd hashicorp/
+ 1337  ls
+ 1338  pwd
+ 1339  ls
+ 1340  ls azurerm/
+ 1341  cd ..
+ 1342  ls
+ 1343  cd ..
+ 1344  ls
+ 1345  cd ..
+ 1346  ls
+ 1347  ls modules/
+ 1348  cat modules/cd ..
+ 1349  cd ..
+ 1350  ls
+ 1351  cd ..
+ 1352  ls
+ 1353  git status
+ 1354  git add .
+ 1355  git cimmite -m "terraform modules"
+ 1356  git commite -m "terraform modules"
+ 1357  git commit -m "terraform modules"
+ 1358  git push origin master
+ 1359  ls
+ 1360  echo ".terraform/" >> .gitignore
+ 1361  echo "*.tfstate" >> .gitignore
+ 1362  echo "*.tfstate.backup" >> .gitignore
+ 1363  git status
+ 1364  git add .
+ 1365  git commit -m "gitfile"
+ 1366  git push origin master
+ 1367  ls
+ 1368  ls -la
+ 1369  cd .git
+ 1370  ls
+ 1371  ls -ls
+ 1372  git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch .terraform' --prune-empty --tag-name-filter cat -- --all
+ 1373  git gc --prune=now --aggressive
+ 1374  git push origin master
+ 1375  git push origin master --force
+ 1376  cd ..
+ 1377  ls
+ 1378  git status
+ 1379  git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch .terraform' --prune-empty --tag-name-filter cat -- --all
+ 1380  git gc --prune=now --aggressive
+ 1381  git push origin master --force
+ 1382  rm -rf .git
+ 1383  git init
+ 1384  git add .
+ 1385  git commit -m "clean commit"
+ 1386  git remote add origin https://github.com/srayudu425/Git-demo.git
+ 1387  echo ".terraform/" >> .gitignore
+ 1388  echo "*.tfstate" >> .gitignore
+ 1389  echo "*.tfstate.backup" >> .gitignore
+ 1390  git push origin master --force
+ 1391  history
+ 1392  history | grep git
+ 1393  git push origin master --force
+ 1394  cat ~/.bash_history
+ 1395  history > history.txt
