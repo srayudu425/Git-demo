@@ -58,3 +58,19 @@ module "nsg" {
 
   subnet_id = module.network.aks_subnet_id
 }
+#attach nsg to subnet
+resource "azurerm_subnet_network_security_group_association" "assoc" {
+  subnet_id                 = module.vnet.subnet_ids["web-subnet"]
+  network_security_group_id = module.nsg.nsg_id
+}
+
+module "data_disk" {
+  source              = "./modules/data_disk"
+  disk_name           = "vm1-data-disk"
+  location            = "East US"
+  resource_group_name = "rg-demo"
+  disk_size_gb        = 5
+
+  vm_id = module.vm.vm_id   # 👈 from VM module
+  lun   = 0
+}
