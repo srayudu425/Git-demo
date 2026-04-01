@@ -1,0 +1,79 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.7",
+  "serial": 83,
+  "lineage": "8914c5c9-c947-f7b9-ff9e-6f7fa1111f6c",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "azurerm_key_vault_secret",
+      "name": "vm_password",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "content_type": "",
+            "expiration_date": "",
+            "id": "https://kv-demo-a9x2k.vault.azure.net/secrets/vm-password/56782d76bb864c678622d5a9994f5243",
+            "key_vault_id": "/subscriptions/4c5c0efd-9593-47fa-ab04-ba71d7c0d24d/resourceGroups/rg-aks-demo/providers/Microsoft.KeyVault/vaults/kv-demo-a9x2k",
+            "name": "vm-password",
+            "not_before_date": "",
+            "resource_id": "/subscriptions/4c5c0efd-9593-47fa-ab04-ba71d7c0d24d/resourceGroups/rg-aks-demo/providers/Microsoft.KeyVault/vaults/kv-demo-a9x2k/secrets/vm-password/versions/56782d76bb864c678622d5a9994f5243",
+            "resource_versionless_id": "/subscriptions/4c5c0efd-9593-47fa-ab04-ba71d7c0d24d/resourceGroups/rg-aks-demo/providers/Microsoft.KeyVault/vaults/kv-demo-a9x2k/secrets/vm-password",
+            "tags": {},
+            "timeouts": null,
+            "value": "Password@1234",
+            "value_wo": null,
+            "value_wo_version": 0,
+            "version": "56782d76bb864c678622d5a9994f5243",
+            "versionless_id": "https://kv-demo-a9x2k.vault.azure.net/secrets/vm-password"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.keyvault.azurerm_key_vault.kv",
+            "module.rg.azurerm_resource_group.rg"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.rg",
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "rg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/4c5c0efd-9593-47fa-ab04-ba71d7c0d24d/resourceGroups/rg-aks-demo",
+            "location": "northcentralus",
+            "managed_by": "",
+            "name": "rg-aks-demo",
+            "tags": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "name": "rg-aks-demo",
+            "subscription_id": "4c5c0efd-9593-47fa-ab04-ba71d7c0d24d"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

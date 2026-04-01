@@ -1,11 +1,15 @@
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
 }
 
 module "rg" {
   source   = "./modules/resource_group"
   name     = "rg-aks-demo"
-  location = "East US 2"
+  location = "EAST US 2 "
 }
 
 #module "identity" {
@@ -31,11 +35,27 @@ module "acr" {
 
 module "keyvault" {
   source              = "./modules/keyvault"
-  key_vault_name      = "keyvault1"
+  key_vault_name      = "kv-demo-a9x2k"
   location            = module.rg.location
   resource_group_name = module.rg.name
   tenant_id           = "7870b748-69be-4cb3-b6bf-f5c60c8a2319"
 }
+
+#Create Secret in Key Vault
+resource "azurerm_key_vault_secret" "vm_password" {
+  name         = "vm-password"
+  value        = "Password@1234"
+  key_vault_id = module.keyvault.id
+}
+
+
+#Read Secret (Data Source)
+#data "azurerm_key_vault_secret" "vm_password" {
+  #name         = "vm-password"
+  #key_vault_id = module.keyvault.id
+#}
+
+
 module "aks" {
   source              = "./modules/aks"
   cluster_name        = "aks-demo-cluster"
@@ -47,7 +67,7 @@ module "aks" {
   #identity_id           = module.identity.id
   #identity_principal_id = module.identity.principal_id
   node_count = 1
-  vm_size = "Standard_B2s"
+  vm_size = "Standard_D2_v3"
 }
 
 module "nsg" {
@@ -56,21 +76,41 @@ module "nsg" {
   location            = module.rg.location
   resource_group_name = module.rg.name
 
-  subnet_id = module.network.aks_subnet_id
+  subnet_id = module.network.subnet_id
 }
 #attach nsg to subnet
-resource "azurerm_subnet_network_security_group_association" "assoc" {
-  subnet_id                 = module.vnet.subnet_ids["web-subnet"]
+resource "azurerm_subnet_network_security_group_association" "nsg-assoc" {
+  subnet_id                 = module.network.subnet_id
   network_security_group_id = module.nsg.nsg_id
 }
 
 module "data_disk" {
   source              = "./modules/data_disk"
   disk_name           = "vm1-data-disk"
-  location            = "East US"
-  resource_group_name = "rg-demo"
+  location            = module.rg.location
+  resource_group_name = module.rg.name
   disk_size_gb        = 5
 
-  vm_id = module.vm.vm_id   # 👈 from VM module
-  lun   = 0
+}
+
+module "nic" {
+  source              = "./modules/nic"
+  nic_name            = "vm-nic"
+  location            = module.rg.location
+  resource_group_name = module.rg.name
+  subnet_id = module.network.subnet_id
+}
+
+module "vm" {
+  source = "./modules/vm"
+
+  vm_name             = "myvm01"
+  location            = module.rg.location
+  resource_group_name = module.rg.name
+
+  nic_id       = module.nic.nic_id
+  data_disk_id = module.data_disk.disk_id
+
+  admin_username = "azureuser"
+  admin_password = azurerm_key_vault_secret.vm_password.value
 }
