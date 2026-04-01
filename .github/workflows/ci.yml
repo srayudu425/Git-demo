@@ -20,10 +20,11 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven
-      run: mvn clean package -DskipTests
+      working-directory: azure_aks-cluster/Application-test-java
+      run : mvn clean package -DskipTests
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: java-app-artifact
-        path: target/*.jar
+        path:  azure_aks-cluster/Application-test-java/target/*.jar
