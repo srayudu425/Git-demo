@@ -13,10 +13,10 @@ module "rg" {
 }
 
 #module "identity" {
- # source              = "./modules/identity"
-  #name                = "aks-identity"
-  #location            = module.rg.location
-  #resource_group_name = module.rg.name
+# source              = "./modules/identity"
+#name                = "aks-identity"
+#location            = module.rg.location
+#resource_group_name = module.rg.name
 #}
 
 module "network" {
@@ -51,8 +51,8 @@ resource "azurerm_key_vault_secret" "vm_password" {
 
 #Read Secret (Data Source)
 #data "azurerm_key_vault_secret" "vm_password" {
-  #name         = "vm-password"
-  #key_vault_id = module.keyvault.id
+#name         = "vm-password"
+#key_vault_id = module.keyvault.id
 #}
 
 
@@ -67,7 +67,7 @@ module "aks" {
   #identity_id           = module.identity.id
   #identity_principal_id = module.identity.principal_id
   node_count = 1
-  vm_size = "Standard_D2_v3"
+  vm_size    = "Standard_D2_v3"
 }
 
 module "nsg" {
@@ -98,7 +98,7 @@ module "nic" {
   nic_name            = "vm-nic"
   location            = module.rg.location
   resource_group_name = module.rg.name
-  subnet_id = module.network.subnet_id
+  subnet_id           = module.network.subnet_id
 }
 
 module "vm" {
@@ -120,15 +120,19 @@ module "sp" {
   source = "./modules/service_principal"
 
   sp_name = "terraform-sp"
-    role_assignments = {
+role_assignments = {
     acr = {
       role  = "AcrPush"
-      scope = azurerm_container_registry.acr.id
+      scope = module.acr.acr_id
     }
 
     aks = {
       role  = "Azure Kubernetes Service RBAC Writer"
-      scope = azurerm_kubernetes_cluster.aks.id
+      scope = module.aks.aks_id
     }
+    keyvault = {
+     role  = "Key Vault Secrets Officer"
+     scope = module.keyvault.id
+   }
   }
 }

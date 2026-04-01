@@ -4,6 +4,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name = var.resource_group_name
   dns_prefix          = "aksdemo"  #a DNS name for the AKS API server (control plane)(kubectl use chesi cluster ni access cheyadaniki)
 
+oidc_issuer_enabled = true
+
   default_node_pool {
     name       = "nodepool"
     node_count = var.node_count
