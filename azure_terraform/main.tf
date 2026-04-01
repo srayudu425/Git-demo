@@ -114,3 +114,21 @@ module "vm" {
   admin_username = "azureuser"
   admin_password = azurerm_key_vault_secret.vm_password.value
 }
+
+
+module "sp" {
+  source = "./modules/service_principal"
+
+  sp_name = "terraform-sp"
+    role_assignments = {
+    acr = {
+      role  = "AcrPush"
+      scope = azurerm_container_registry.acr.id
+    }
+
+    aks = {
+      role  = "Azure Kubernetes Service RBAC Writer"
+      scope = azurerm_kubernetes_cluster.aks.id
+    }
+  }
+}

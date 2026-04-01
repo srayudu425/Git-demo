@@ -28,3 +28,24 @@ jobs:
       with:
         name: java-app-artifact
         path:  azure_aks-cluster/Application-test-java/target/*.jar
+
+  # Login to Azure
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Login to ACR
+    - name: ACR Login
+      run: az acr login --name ${{ secrets.ACR_NAME }}
+
+    # Build Docker Image
+    - name: Build Docker Image
+      working-directory: azure_aks-cluster/Application-test-java
+      run: |
+        docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+
+    # Push to ACR
+    - name: Push Docker Image
+      run: |
+        docker push ${{ secrets.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}      
