@@ -26,6 +26,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
+        working-directory: terraform-azure-appservice
         run: terraform init
 
       - name: Terraform Validate
