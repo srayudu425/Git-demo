@@ -1,12 +1,3 @@
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "rg-tfstate"
-    storage_account_name = "tfstate12345"
-    container_name       = "tfstatest"
-    key                  = "terraform.tfstate"
-  }
-}
-
 provider "azurerm" {
   features {}
   use_oidc = true
