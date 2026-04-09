@@ -1,6 +1,7 @@
 name: Terraform OIDC Deployment
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - appservice
