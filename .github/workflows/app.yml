@@ -1,6 +1,6 @@
 name: Deploy App to Azure App Service
 
-#on:
+on:
   workflow_dispatch:
   push:
     branches:
