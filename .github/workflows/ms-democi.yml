@@ -34,6 +34,10 @@ jobs:
         working-directory: terraform-azure-appservice
         run: terraform import azurerm_resource_group.rg /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg-free-appservice || true
       
+      - name: Terraform Import Service Plan
+        working-directory: terraform-azure-appservice
+        run: terraform import azurerm_service_plan.asp /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg-free-appservice/providers/Microsoft.Web/serverFarms/free-asp-plan
+
       - name: Terraform Validate
         working-directory: terraform-azure-appservice 
         run: terraform validate
