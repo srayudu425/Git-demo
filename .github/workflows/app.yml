@@ -5,6 +5,7 @@ on:
     workflows: ["CI Pipeline"]
     types:
       - completed
+  workflow_dispatch:   # ✅ CORRECT PLACE
 
 permissions:
   id-token: write
@@ -17,9 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: prod   # 👈 THIS ENABLES APPROVAL
-
-     workflow_dispatch:   # 👈 ADD THIS
+      name: prod   # 👈 approval enabled
 
     steps:
       - name: Checkout Code
