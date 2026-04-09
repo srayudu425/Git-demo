@@ -27,7 +27,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: terraform-azure-appservice
+        working-directory: storage
         run: terraform init
 
       #- name: Terraform Import   # 👈 ADD HERE (temporary)
