@@ -5,7 +5,7 @@ name: Build and Push Docker Images
  #   branches:
   #    - main
 
-env:
+#env:
   REGISTRY: docker.io
   IMAGE_BACKEND: srayudu/ms-demorepo/imagebackend
   IMAGE_FRONTEND: srayudu/ms-demorepo/imagefrontend
