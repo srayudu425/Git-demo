@@ -1,9 +1,13 @@
 name: Deploy App to Azure App Service
 
-on:
-  push:
-    branches:
-      - appservice
+#on:
+    workflow_run:
+     workflows: ["Terraform OIDC Deployment"]   # 👈 must match your ci.yml name
+     types:
+      - completed  
+#  push:
+ #   branches:
+ #     - appservice
 
 permissions:
   id-token: write
@@ -11,6 +15,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+    build-and-deploy:
+    # ✅ Run ONLY if CI is successful
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:

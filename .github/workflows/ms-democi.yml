@@ -34,25 +34,25 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: storage
+        working-directory: terraform-azure-appservice
         run: terraform init
 
-      - name: Terraform Import   # 👈 ADD HERE (temporary)
-        working-directory: storage
-        run: terraform import azurerm_resource_group.tfstate_rg /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg-tfstate || true
+      #- name: Terraform Import   # 👈 ADD HERE (temporary)
+      #  working-directory: terraform-azure-appservice
+      #  run: terraform import azurerm_resource_group.tfstate_rg /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg-tfstate || true
       
       #- name: Terraform Import Service Plan
       #  working-directory: terraform-azure-appservice
       #  run: terraform import azurerm_service_plan.asp /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg-free-appservice/providers/Microsoft.Web/serverFarms/free-asp-plan
 
       - name: Terraform Validate
-        working-directory: storage 
+        working-directory: terraform-azure-appservice 
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: storage
+        working-directory: terraform-azure-appservice
         run: terraform plan
 
       - name: Terraform Apply
-        working-directory: storage
+        working-directory: terraform-azure-appservice
         run: terraform apply -auto-approve

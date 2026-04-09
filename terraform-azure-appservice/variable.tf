@@ -7,7 +7,7 @@ variable "location" {
 }
 
 variable "app_service_plan_name" {
-  default = "free-asp-plan"
+  default = "fre-asp-plan"
 }
 
 variable "app_name" {
