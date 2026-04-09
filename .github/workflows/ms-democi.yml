@@ -1,10 +1,10 @@
 name: Terraform OIDC Deployment
 
-on:
+#on:
   workflow_dispatch:
-  push:
-    branches:
-      - appservice
+  #push:
+    #branches:
+    #  - appservice
 
 permissions:
   id-token: write

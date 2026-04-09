@@ -1,13 +1,10 @@
 name: Deploy App to Azure App Service
 
-#on:
-    workflow_run:
-     workflows: ["Terraform OIDC Deployment"]   # 👈 must match your ci.yml name
-     types:
-      - completed  
-#  push:
- #   branches:
- #     - appservice
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
 
 permissions:
   id-token: write
@@ -15,16 +12,19 @@ permissions:
 
 jobs:
   build-and-deploy:
-    build-and-deploy:
-    # ✅ Run ONLY if CI is successful
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ubuntu-latest
+
+    environment:
+      name: prod   # 👈 THIS ENABLES APPROVAL
+
+     workflow_dispatch:   # 👈 ADD THIS
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # 🔥 Azure Login (OIDC)
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -32,20 +32,17 @@ jobs:
           tenant-id: ${{ secrets.ARM_TENANT_ID }}
           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
-      # 🔹 Setup Node
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 🔹 Install dependencies
       - name: Install Dependencies
         working-directory: application
         run: npm install
 
-      # 🔹 Deploy to App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          package: .
+          package: ./application
