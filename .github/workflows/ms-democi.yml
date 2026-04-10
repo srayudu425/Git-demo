@@ -1,10 +1,10 @@
 name: Terraform OIDC Deployment
 
-#on:
+on:
   workflow_dispatch:
-  #push:
-    #branches:
-    #  - appservice
+  push:
+    branches:
+      - appservice
 
 permissions:
   id-token: write
@@ -18,6 +18,7 @@ jobs:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      name: prod   # 👈 approval enabled
 
     steps:
       - name: Checkout Code
