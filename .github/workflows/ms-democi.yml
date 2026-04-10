@@ -14,11 +14,13 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
-    environment:
+    env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      name: prod   # 👈 approval enabled
+      
+    environment:
+      name: prod   # 👈 approval enabled      
 
     steps:
       - name: Checkout Code
